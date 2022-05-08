@@ -44,3 +44,7 @@ jobs:
 
       - name: Build repository
         run: ~/rclone-makerepo/build.zsh
+
+      - name: List repo files
+        run: du -ah ~/rclone-makerepo/dist/
+
