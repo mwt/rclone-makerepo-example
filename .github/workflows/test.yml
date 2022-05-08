@@ -22,7 +22,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
       # Import the GPG key to sign repo
       - name: Import GPG key
         id: import_gpg
@@ -35,21 +35,12 @@ jobs:
         run: |
           wget -O ~/rclone-makerepo.tar.gz "https://github.com/mwt/rclone-makerepo/releases/download/v0.1.0/rclone-makerepo_amd64.tar.gz"
           tar -xvf ~/rclone-makerepo.tar.gz -C ~/
-  
-      # List GPG IDs
-      - name: GPG user IDs
-        run: |
-          echo "fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
-          echo "keyid:       ${{ steps.import_gpg.outputs.keyid }}"
-          echo "name:        ${{ steps.import_gpg.outputs.name }}"
-          echo "email:       ${{ steps.import_gpg.outputs.email }}"
-          gpg -k
-      
+
       # Run the setup scripts
       - name: Install deps and setup enviroment
         run: |
           ~/rclone-makerepo/initial-setup/1-install-packages.sh
           ~/rclone-makerepo/initial-setup/2-enviroment.zsh "${{ steps.import_gpg.outputs.fingerprint }}"
-          
+
       - name: Build repository
         run: ~/rclone-makerepo/build.zsh
