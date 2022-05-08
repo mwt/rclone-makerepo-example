@@ -33,7 +33,7 @@ jobs:
       # Download and extract the mwt/rclone-makerepo release
       - name: Download and unpack script
         run: |
-          wget -O ~/rclone-makerepo.tar.gz "https://github.com/mwt/rclone-makerepo/releases/download/v0.1.0/rclone-makerepo_amd64.tar.gz"
+          wget -O ~/rclone-makerepo.tar.gz "https://github.com/mwt/rclone-makerepo/releases/download/v0.1.1/rclone-makerepo_amd64.tar.gz"
           tar -xvf ~/rclone-makerepo.tar.gz -C ~/
 
       # Run the setup scripts
